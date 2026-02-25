@@ -5,6 +5,10 @@ It's pretty basic for now, it just works with tests, but I'll be working on exte
 
 Uses mpv as a sound backend, but it can be changed in the configuration as well as the sound it plays when tests fails.
 
+## ⚠️ Requirements
+- This plugin only works on Linux and WSL2 at the moment.
+- By default this plugin uses mpv, so you need to install it before using this plugin or change the backend you want to use in the configuration.
+
 ## 📦 Installation
 **[lazy.nvim](https://github.com/folke/lazy.nvim)**
 
@@ -61,11 +65,30 @@ use {
 ## ⚙️ Configuration
 The plugin comes with a default configuration already, but it is very simple, just 2 variables you need to change.
 ```lua
+local function get_plugin_root()
+  -- Internal function that resolves the plugin directory
+end
+
+M.config = {
+  -- Absolute path to your audio file. 
+  sound_path = get_plugin_root() .. "/sound/FAH.mp3",
+  
+  -- The CLI command to execute the audio file.
+  play_command = { "mpv", "--no-video", "--really-quiet" }
+}
+```
+
+### Customizing the settings
+
+To override the defaults, call the setup function before loading neotest or anywhere in your config:
+
+```lua
 require("neotest-FAHsound").setup({
-    -- Absolute path to your audio file. 
-    sound_path = get_plugin_root() .. "/sound/FAH.mp3",
-    -- The CLI command to execute the audio file.
-    play_command = { "mpv", "--no-video", "--really-quiet" }
+  -- Use your own custom sound (use an absolute path)
+  sound_path = vim.fn.expand("~/.config/nvim/sounds/my_custom_fail_sound.wav"),
+  
+  -- Example: Change the backend to PulseAudio's paplay
+  play_command = { "paplay" }
 })
 ```
 
