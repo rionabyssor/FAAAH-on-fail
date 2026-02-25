@@ -95,11 +95,15 @@ require("neotest-FAHsound").setup({
 ## How it works
 Theres no much magic behind this plugin, just write some tests in your favorite language and then just run neotest and then if a test fails, it will automatically reproduce the sound.
 
+### Commands
+I created some utility commands that will be handy for some.
+For now there are just 3 commands which are: `FahSoundToggle`, `FahSoundTest` and `FahSoundStatus`.
+
 ## Future Features
-- [] Multiple built-in sounds
-- [] Volume control
-- [] Failure messages
-- [] Cross platform
-- [] Build failure detection
-- [] Runtime failure detection
-- [] Commands to enable/disable the plugin and for test sounds
+- [ ] Multiple built-in sounds
+- [ ] Volume control
+- [ ] Failure messages
+- [ ] Cross platform
+- [ ] Build failure detection
+- [ ] Runtime failure detection
+- [x] Commands to enable/disable the plugin and for test sounds
